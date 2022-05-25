@@ -19,6 +19,6 @@ print(result % 10)
 L = [x**2 for x in map(int,input().split())]
 print(sum(L)%10)
 
-
+이런 방법이!!
 """
 
