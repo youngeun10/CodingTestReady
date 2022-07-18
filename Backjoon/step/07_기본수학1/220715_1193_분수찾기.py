@@ -6,7 +6,7 @@ while sum < x:
     sum += n
     n += 1
 
-if n % 2 == 0 :
+if n % 2 == 0:
     a = 1 + (sum - x)
     b = (n - 1) - (sum - x)
 else:

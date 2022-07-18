@@ -2,45 +2,34 @@ def a(n, a):
     for i in range(n):
         for j in range(n - 3):
             if i == 0 and j == 0:
-                m = sum(a[i][j:j + 4])
+                m = a[i][j] + a[i][j + 1] + a[i][j + 2] + a[i][j + 3]
             else:
-                if sum(a[i][j:j + 4]) > m:
-                    m = sum(a[i][j:j + 4])
+                hap = a[i][j] + a[i][j + 1] + a[i][j + 2] + a[i][j + 3]
+                if hap > m:
+                    m = hap
 
     for i in range(n-3):
         for j in range(n):
             hap = a[i][j] + a[i+1][j] + a[i+2][j] + a[i+3][j]
             if hap > m:
                 m = hap
-    return m
 
-
-def e(n, a):
     for i in range(n - 1):
         for j in range(n - 1):
-            if i == 0 and j == 0:
-                m = a[i][j] + a[i][j + 1] + a[i + 1][j] + a[i + 1][j + 1]
-            else:
-                hap = a[i][j] + a[i][j + 1] + a[i + 1][j] + a[i + 1][j + 1]
-                if hap > m:
-                    m = hap
-    return m
+            hap = a[i][j] + a[i][j + 1] + a[i + 1][j] + a[i + 1][j + 1]
+            if hap > m:
+                m = hap
 
-
-def bcd(n, a):
     for i in range(n - 1):
         for j in range(n - 2):
-            if i == 0 and j == 0:
-                m = a[i][j] + a[i][j + 1] + a[i + 1][j + 1] + a[i + 1][j + 2]
-            else:
-                hap2 = a[i][j] + a[i][j + 1] + a[i + 1][j + 1] + a[i + 1][j + 2]
-                hap31 = a[i][j] + a[i][j + 1] + a[i][j + 2] + a[i + 1][j + 2]
-                hap32 = a[i][j] + a[i + 1][j] + a[i + 1][j + 1] + a[i + 1][j + 2]
-                hap41 = a[i][j] + a[i][j + 1] + a[i][j + 2] + a[i + 1][j + 1]
-                hap42 = a[i][j + 1] + a[i + 1][j] + a[i + 1][j + 1] + a[i + 1][j + 2]
+            hap2 = a[i][j] + a[i][j + 1] + a[i + 1][j + 1] + a[i + 1][j + 2]
+            hap31 = a[i][j] + a[i][j + 1] + a[i][j + 2] + a[i + 1][j + 2]
+            hap32 = a[i][j] + a[i + 1][j] + a[i + 1][j + 1] + a[i + 1][j + 2]
+            hap41 = a[i][j] + a[i][j + 1] + a[i][j + 2] + a[i + 1][j + 1]
+            hap42 = a[i][j + 1] + a[i + 1][j] + a[i + 1][j + 1] + a[i + 1][j + 2]
 
-                if max(hap2, hap31, hap32, hap41, hap42) > m:
-                    m = max(hap2, hap31, hap32, hap41, hap42)
+            if max(hap2, hap31, hap32, hap41, hap42) > m:
+                m = max(hap2, hap31, hap32, hap41, hap42)
 
     for i in range(n - 2):
         for j in range(n - 1):
@@ -59,7 +48,7 @@ t = 1
 while True:
     num = int(input())
 
-    if num < 4:
+    if num == 0:
         break
 
     arr = []
@@ -67,6 +56,6 @@ while True:
     for i in range(num):
         arr.append(list(map(int, input().split())))
 
-    print(f'{t}. {max(a(num, arr), bcd(num, arr), e(num, arr))}')
+    print(f'{t}. {a(num, arr)}')
     t += 1
 
